@@ -13,3 +13,19 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap";
+
+:root {
+    --font-family: "Gill Sans", sans-serif;
+    --white-color: #ffffff;
+    --green-color: #a9c23f;
+    --secondary-green-color: #c1ea12;
+    --brown-color: #30281b;
+    --secondary-brown-color: #402c0e;
+}
+
+body {
+    font-family: var(--font-family);
+    color: var(--brown-color);
+    background:linear-gradient(45deg, var(--brown-color), var(--secondary-brown-color));
+}

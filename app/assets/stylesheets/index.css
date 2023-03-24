@@ -1,0 +1,6 @@
+content {
+    border-radius:25px;
+    padding:25px;
+    background:var(--white-color);
+    display:block;
+}

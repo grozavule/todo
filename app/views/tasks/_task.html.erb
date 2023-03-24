@@ -1,0 +1,30 @@
+<tr class="task-row" data-task-id="<%= task.id %>">
+  <td>
+    <% if task.date_completed.present? %>
+      <input type="checkbox" class="completed-checkbox" id="task-<%#= task.id %>" data-task-id="<%#= task.id %>" checked/>
+    <% else %>
+      <input type="checkbox" class="completed-checkbox" id="task-<%#= task.id %>" data-task-id="<%#= task.id %>" />
+    <% end %>
+  </td>
+  <td>
+    <%= task.name %>
+  </td>
+  <td>
+    <%= task.deadline %>
+  </td>
+</tr>
+<!--<div class="task-container">-->
+<!--  <div class="task-completed">-->
+    <%# if task.date_completed.present? %>
+<!--      <input type="checkbox" class="completed-checkbox" id="task-<%#= task.id %>" data-task-id="<%#= task.id %>" checked/>-->
+    <%# else %>
+<!--      <input type="checkbox" class="completed-checkbox" id="task-<%#= task.id %>" data-task-id="<%#= task.id %>" />-->
+    <%# end %>
+<!--  </div>-->
+<!--  <div class="task-name">-->
+    <%#= task.name %>
+<!--  </div>-->
+<!--  <div class="task-deadline">-->
+    <%#= task.deadline %>
+<!--  </div>-->
+<!--</div>-->
