@@ -4,3 +4,7 @@ content {
     background:var(--white-color);
     display:block;
 }
+
+.task-row {
+    cursor:pointer;
+}

@@ -10,10 +10,10 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require _bootstrap
  *= require_tree .
  *= require_self
  */
-@import "bootstrap";
 
 :root {
     --font-family: "Gill Sans", sans-serif;
@@ -28,4 +28,13 @@ body {
     font-family: var(--font-family);
     color: var(--brown-color);
     background:linear-gradient(45deg, var(--brown-color), var(--secondary-brown-color));
+}
+
+.task-btn {
+    border-radius:25px;
+    padding:25px;
+    background:linear-gradient(45deg, var(--green-color), var(--secondary-green-color));
+    color:var(--white-color);
+    font-weight:bold;
+    border:none;
 }
