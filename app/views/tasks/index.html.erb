@@ -2,6 +2,11 @@
   <%= button_to "Add Task", new_task_path, method: :get, class: "task-btn mb-3" %>
 </div>
 <content>
+  <% if flash[:notice] %>
+    <div class="alert alert-success">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
   <h1>Tasks</h1>
   <div id="tasks" class="table-responsive-md">
     <% if @tasks.length > 0 %>
