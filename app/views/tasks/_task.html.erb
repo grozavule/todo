@@ -1,9 +1,9 @@
 <tr class="task-row" data-task-id="<%= task.id %>">
   <td>
     <% if task.date_completed.present? %>
-      <input type="checkbox" class="completed-checkbox" id="task-<%#= task.id %>" data-task-id="<%#= task.id %>" checked/>
+      <input type="checkbox" class="completed-checkbox form-check-input" id="task-<%#= task.id %>" data-task-id="<%#= task.id %>" checked/>
     <% else %>
-      <input type="checkbox" class="completed-checkbox" id="task-<%#= task.id %>" data-task-id="<%#= task.id %>" />
+      <input type="checkbox" class="completed-checkbox form-check-input" id="task-<%#= task.id %>" data-task-id="<%#= task.id %>" />
     <% end %>
   </td>
   <td>
@@ -12,19 +12,9 @@
   <td>
     <%= task.deadline.strftime("%B %d, %Y %I:%M %p") %>
   </td>
+  <td class="text-end">
+    <!-- Edit Task Link -->
+    <%= link_to "#{'<i class="fa fa-pencil me-2"></i>'.html_safe}".html_safe, edit_task_path(task.id) %>
+    <i class="fa fa-trash-o"></i>
+  </td>
 </tr>
-<!--<div class="task-container">-->
-<!--  <div class="task-completed">-->
-    <%# if task.date_completed.present? %>
-<!--      <input type="checkbox" class="completed-checkbox" id="task-<%#= task.id %>" data-task-id="<%#= task.id %>" checked/>-->
-    <%# else %>
-<!--      <input type="checkbox" class="completed-checkbox" id="task-<%#= task.id %>" data-task-id="<%#= task.id %>" />-->
-    <%# end %>
-<!--  </div>-->
-<!--  <div class="task-name">-->
-    <%#= task.name %>
-<!--  </div>-->
-<!--  <div class="task-deadline">-->
-    <%#= task.deadline %>
-<!--  </div>-->
-<!--</div>-->

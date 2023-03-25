@@ -1,13 +1,16 @@
-<%= button_to "Add Task", new_task_path, method: :get, class: "task-btn mb-3" %>
+<div id="add-btn-container">
+  <%= button_to "Add Task", new_task_path, method: :get, class: "task-btn mb-3" %>
+</div>
 <content>
   <h1>Tasks</h1>
-  <div id="tasks">
+  <div id="tasks" class="table-responsive-md">
     <% if @tasks.length > 0 %>
       <table class="table table-striped">
         <thead>
           <th></th>
           <th>Task Name</th>
           <th>Deadline</th>
+          <th></th>
         </thead>
         <tbody>
           <% @tasks.each do |task| %>

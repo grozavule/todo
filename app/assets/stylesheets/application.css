@@ -11,6 +11,7 @@
  * It is generally better to create a new file per style scope.
  *
  *= require _bootstrap
+ *= require font-awesome
  *= require_tree .
  *= require_self
  */
@@ -22,19 +23,27 @@
     --secondary-green-color: #c1ea12;
     --brown-color: #30281b;
     --secondary-brown-color: #402c0e;
+    --default-spacing:25px;
 }
 
 body {
     font-family: var(--font-family);
     color: var(--brown-color);
     background:linear-gradient(45deg, var(--brown-color), var(--secondary-brown-color));
+    padding:var(--default-spacing);
+}
+
+content, #add-btn-container {
+    width:calc(100vw - (2 * var(--default-spacing)));
+    max-width:1080px;
+    margin:0 auto;
 }
 
 .task-btn {
     border-radius:25px;
     padding:25px;
     background:linear-gradient(45deg, var(--green-color), var(--secondary-green-color));
-    color:var(--white-color);
+    color:var(--brown-color);
     font-weight:bold;
     border:none;
 }
