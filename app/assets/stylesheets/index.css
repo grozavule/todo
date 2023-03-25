@@ -8,3 +8,12 @@ content {
 .task-row {
     cursor:pointer;
 }
+
+.inline-form {
+    display:inline;
+}
+
+.invisible-btn {
+    background:none;
+    border:none;
+}

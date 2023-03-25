@@ -41,6 +41,16 @@ class TasksController < ApplicationController
     end
   end
 
+  def destroy
+    @task = Task.find(params[:id])
+    @task.destroy
+
+    respond_to do |format|
+      format.html { redirect_to task_url, notice: "The task was successfully deleted." }
+      format.json { head :no_content }
+    end
+  end
+
   private
   def task_params
     params.require(:task).permit(:name, :description, :deadline, :date_completed, :priority)

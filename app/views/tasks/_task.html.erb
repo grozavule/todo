@@ -15,6 +15,10 @@
   <td class="text-end">
     <!-- Edit Task Link -->
     <%= link_to "#{'<i class="fa fa-pencil me-2"></i>'.html_safe}".html_safe, edit_task_path(task.id) %>
-    <i class="fa fa-trash-o"></i>
+    <%= form_with(model: @task, local: true, method: :delete, url: task_path(task.id), html: { class: "inline-form" }) do |f| %>
+      <%= button_tag type: :submit, class: "invisible-btn", data: { confirm: 'Are you sure?' } do %>
+        <i class="fa fa-trash-o"></i>
+      <% end %>
+    <% end %>
   </td>
 </tr>
