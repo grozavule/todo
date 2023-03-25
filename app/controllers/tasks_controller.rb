@@ -51,6 +51,22 @@ class TasksController < ApplicationController
     end
   end
 
+  #updates the priorities of all tasks when they are shuffled in the UI
+  def set_priority
+    priority_level = 1;
+    index_priorities = {};
+
+    index_order = params[:new_index_order]
+    index_order.each do |index|
+      @task = Task.find(index);
+      @task.priority = priority_level;
+      @task.save
+      index_priorities[index] = priority_level
+      priority_level += 1
+    end
+    render json: { priority_levels: index_priorities }
+  end
+
   private
   def task_params
     params.require(:task).permit(:name, :description, :deadline, :date_completed, :priority)

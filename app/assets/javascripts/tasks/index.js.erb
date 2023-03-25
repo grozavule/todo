@@ -1,0 +1,23 @@
+$(() => {
+    $(".table tbody").sortable({
+        items: ".task-row",
+        placeholder: "ui-state-highlight",
+        helper: "clone",
+        dropOnEmpty: true,
+        forcePlaceholderSize: true,
+        update: function() {
+            let newIndexOrder = $(this).sortable("toArray", {attribute: "data-task-id"});
+            $.ajax({
+               url: "/tasks/priority",
+               type: "post",
+               data: { new_index_order: newIndexOrder },
+               success: (result) => {
+                   console.log(result);
+               },
+               error: (xhr, status, error) => {
+                   console.log(status, error);
+               }
+            });
+        }
+    }).disableSelection();
+})
