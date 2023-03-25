@@ -1,4 +1,15 @@
 $(() => {
+    const mainContentArea = document.querySelector("#main-content");
+    const taskList = document.querySelector("#tasks");
+
+    const displayAlert = (type, message) => {
+        let alert = document.createElement("div");
+        alert.classList.add("alert", `alert-${type}`);
+        alert.textContent = message;
+
+        mainContentArea.insertBefore(alert, taskList);
+    }
+
     $(".table tbody").sortable({
         items: ".task-row",
         placeholder: "ui-state-highlight",
@@ -13,11 +24,13 @@ $(() => {
                data: { new_index_order: newIndexOrder },
                success: (result) => {
                    console.log(result);
+                   displayAlert("success", "Task priorities have been updated successfully.");
                },
                error: (xhr, status, error) => {
                    console.log(status, error);
+                   displayAlert("danger", `${status}: ${error}`);
                }
             });
         }
     }).disableSelection();
-})
+});

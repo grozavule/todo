@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   def index
-    @tasks = Task.all
+    @tasks = Task.order(:priority)
   end
 
   def show
@@ -16,6 +16,7 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
+    @task.priority = Task.maximum(:priority).to_i + 1
 
     respond_to do |format|
       if @task.save
