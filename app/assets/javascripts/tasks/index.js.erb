@@ -1,13 +1,38 @@
 $(() => {
+    /** VARIABLE DECLARATIONS **/
     const mainContentArea = document.querySelector("#main-content");
     const taskList = document.querySelector("#tasks");
+    const taskCheckboxes = document.querySelectorAll("input[data-task-id]");
 
+    /** FUNCTION DECLARATIONS **/
     const displayAlert = (type, message) => {
         let alert = document.createElement("div");
         alert.classList.add("alert", `alert-${type}`);
         alert.textContent = message;
 
         mainContentArea.insertBefore(alert, taskList);
+    }
+
+    const handleCheckbox = (e) => {
+        let checkbox = e.currentTarget;
+        let taskId = checkbox.getAttribute('data-task-id');
+
+        $.ajax({
+            url: `/tasks/${taskId}/complete`,
+            type: "post",
+            data: { is_checked: checkbox.checked },
+            success: (result) => {
+                if(result.status == "completed"){
+                    checkbox.parentElement.closest("tr").classList.add('task-completed');
+                } else {
+                    checkbox.parentElement.closest("tr").classList.remove('task-completed');
+                }
+                displayAlert("success", result.notice);
+            },
+            error: (xhr, status, error) => {
+                displayAlert("danger", `${status}: ${error}`);
+            }
+        });
     }
 
     $(".table tbody").sortable({
@@ -33,4 +58,9 @@ $(() => {
             });
         }
     }).disableSelection();
+
+    /** EVENT LISTENERS **/
+    taskCheckboxes.forEach((checkbox) => {
+        checkbox.addEventListener("click", handleCheckbox);
+    });
 });

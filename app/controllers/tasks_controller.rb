@@ -53,7 +53,7 @@ class TasksController < ApplicationController
     end
   end
 
-  #updates the priorities of all tasks when they are shuffled in the UI
+  #updates the priorities of all tasks when they are rearranged in the UI
   def set_priority
     priority_level = 1;
     index_priorities = {};
@@ -67,6 +67,25 @@ class TasksController < ApplicationController
       priority_level += 1
     end
     render json: { priority_levels: index_priorities }
+  end
+
+  #tasks can be marked as completed or incomplete; this action will update a task accordingly
+  def update_completed_status
+    @task = Task.find(params[:id])
+    is_complete = ActiveModel::Type::Boolean.new.cast(params[:is_checked])
+
+    if is_complete
+      @task.update(date_completed: Time.now.strftime("%Y-%m-%d %H:%M:%S"))
+      status = "completed"
+      notice = "The task was marked as completed"
+    else
+      @task.update(date_completed: nil)
+      status = "incomplete"
+      notice = "The task was marked as incomplete"
+    end
+
+    render json: { status: status, notice: notice }
+    #redirect_to tasks_path
   end
 
   private

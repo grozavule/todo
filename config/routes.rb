@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :tasks
 
   post "/tasks/priority", to: "tasks#set_priority"
+  post "/tasks/:id/complete", to: "tasks#update_completed_status"
 end

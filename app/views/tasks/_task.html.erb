@@ -1,9 +1,13 @@
+<% if task.date_completed.present? %>
+<tr class="task-row task-completed" data-task-id="<%= task.id %>" data-task-priority="<%= task.priority %>">
+<% else %>
 <tr class="task-row" data-task-id="<%= task.id %>" data-task-priority="<%= task.priority %>">
+<% end %>
   <td>
     <% if task.date_completed.present? %>
-      <input type="checkbox" class="completed-checkbox form-check-input" id="task-<%#= task.id %>" data-task-id="<%#= task.id %>" checked/>
+      <input type="checkbox" class="completed-checkbox form-check-input" id="task-<%= task.id %>" data-task-id="<%= task.id %>" checked/>
     <% else %>
-      <input type="checkbox" class="completed-checkbox form-check-input" id="task-<%#= task.id %>" data-task-id="<%#= task.id %>" />
+      <input type="checkbox" class="completed-checkbox form-check-input" id="task-<%= task.id %>" data-task-id="<%= task.id %>" />
     <% end %>
   </td>
   <td>
