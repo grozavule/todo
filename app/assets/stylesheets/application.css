@@ -18,13 +18,14 @@
  */
 
 :root {
-    --font-family: "Gill Sans", sans-serif;
+    --font-family: "Open Sans", "Gill Sans", sans-serif;
     --white-color: #ffffff;
     --green-color: #a9c23f;
     --secondary-green-color: #c1ea12;
     --brown-color: #30281b;
     --secondary-brown-color: #402c0e;
     --default-spacing:25px;
+    --body-font-size:20px;
 }
 
 a:visited, a:link, a:hover, a:active {
@@ -36,6 +37,7 @@ body {
     color: var(--brown-color);
     background:linear-gradient(45deg, var(--brown-color), var(--secondary-brown-color));
     padding:var(--default-spacing);
+    font-size:var(--body-font-size);
 }
 
 content, #add-btn-container {
@@ -51,4 +53,10 @@ content, #add-btn-container {
     color:var(--brown-color);
     font-weight:bold;
     border:none;
+}
+
+@media screen and (max-width:450px){
+    :root {
+        --body-font-size:25px;
+    }
 }
